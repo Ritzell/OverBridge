@@ -29,11 +29,12 @@ public class Wind : MonoBehaviour
 		AudioSource source = GetComponent<AudioSource> ();
 		while (true) {
 			Windpower = Mathf.PerlinNoise (Windpower * scale, Time.time * scale) * power;
-			foreach (GameObject ob in Object.FindObjectsOfType(typeof(GameObject))) {
+			/*foreach (GameObject ob in Object.FindObjectsOfType(typeof(GameObject))) {
 				if (ob.GetComponent<Rigidbody> ()) {
 					ob.GetComponent<Rigidbody> ().AddForce (Windpower, 0, 0, ForceMode.Force);
 				}
-			}
+			}*/
+			player.AddForce (Windpower, 0, 0, ForceMode.Force);
 			source.pitch = Windpower / (power * 2) + 1 * Mathf.Clamp(Mathf.Abs(player.velocity.y) / 3,1,5f);
 			cloth.externalAcceleration = new Vector3 (Windpower,0,0);
 
