@@ -15,13 +15,17 @@ public class Wind : MonoBehaviour
 	[SerializeField]
 	private Cloth cloth;
 
-	private void Start()
+	private Rigidbody player;
+
+	void Start()
 	{
 		StartCoroutine (WindBreathe ());
+
 	}
 
 	private IEnumerator WindBreathe()
 	{
+		player = FindObjectOfType<Player> ().gameObject.GetComponent<Rigidbody> ();
 		AudioSource source = GetComponent<AudioSource> ();
 		while (true) {
 			Windpower = Mathf.PerlinNoise (Windpower * scale, Time.time * scale) * power;
@@ -30,8 +34,9 @@ public class Wind : MonoBehaviour
 					ob.GetComponent<Rigidbody> ().AddForce (Windpower, 0, 0, ForceMode.Force);
 				}
 			}
-			source.pitch = Windpower / (power * 2) + 1;
+			source.pitch = Windpower / (power * 2) + 1 * Mathf.Clamp(Mathf.Abs(player.velocity.y) / 3,1,5f);
 			cloth.externalAcceleration = new Vector3 (Windpower,0,0);
+
 			yield return null;
 		}
 	}
