@@ -12,6 +12,8 @@ public class Wind : MonoBehaviour
 	private float power = 1;
 	[SerializeField]
 	private ParticleSystem windParticle;
+	[SerializeField]
+	private Cloth cloth;
 
 	private void Start()
 	{
@@ -29,6 +31,7 @@ public class Wind : MonoBehaviour
 				}
 			}
 			source.pitch = Windpower / (power * 2) + 1;
+			cloth.externalAcceleration = new Vector3 (Windpower,0,0);
 			yield return null;
 		}
 	}
