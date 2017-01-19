@@ -54,7 +54,7 @@ public class Wind : MonoBehaviour
     {
         while (true)
         {
-			var random = Mathf.FloorToInt( Random.Range (0,2.5f));
+			var random = Mathf.FloorToInt( Random.Range (0,2.6f));
 			if (random == 0) {
 				Windpower = NaturalRandom (Random.Range (-scale, scale), 10, 0);
 			} else if (random == 2 && Mathf.Abs(Windpower) < 80) {

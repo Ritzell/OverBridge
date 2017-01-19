@@ -7,13 +7,17 @@ using UnityEngine.UI;
 public class ClockTower : MonoBehaviour {
     [SerializeField]
     private GameObject hand;
+	[SerializeField]
+	private Bell bell;
+	[SerializeField]
+	private float[] PlayBellTime;
     [SerializeField]
     private float TimeLimitSeconds = 10;
 
-    private static bool IsGameOver = false;
     private static DateTime StartTime;
     private static TimeSpan RestTime;
-    private Coroutine timer; 
+    private Coroutine timer;
+	private int faze = 0;
 
     void Start()
     {
@@ -27,8 +31,8 @@ public class ClockTower : MonoBehaviour {
     /// </summary>
     private IEnumerator Timer()
     {
-        TimeSpan LimitTime = new TimeSpan(00, (int)TimeLimitSeconds / 60, (int)TimeLimitSeconds % 60);
-        while (!IsGameOver)
+        TimeSpan LimitTime = new TimeSpan(00, 0, (int)TimeLimitSeconds);
+		while (!GameManager.IsGameOver)
         {
             DisplayTime(LimitTime);
             yield return null;
@@ -55,11 +59,15 @@ public class ClockTower : MonoBehaviour {
         TimeSpan elapsedTime = (TimeSpan)(DateTime.Now - StartTime);
         RestTime = limitTime - elapsedTime;
         RotateSecondsHand((360/TimeLimitSeconds) * (float)elapsedTime.Seconds);
-        if ((360 / TimeLimitSeconds) * (float)elapsedTime.Seconds >= 360)
-        {
-            GameManager.IsGameOver = true;
-            StopCoroutine(timer);
-        }
+		var time = (360 / TimeLimitSeconds) * (float)elapsedTime.Seconds;
+		if (time >= PlayBellTime [faze]) {
+			faze++;
+			bell.PlayBell ();
+		}
+		if (time >= 360) {
+			GameManager.IsGameOver = true;
+			StopCoroutine (timer);
+		}
     }
 
     void RotateSecondsHand(float angle)
