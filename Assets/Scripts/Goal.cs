@@ -15,6 +15,7 @@ public class Goal : MonoBehaviour {
     {
 		if (!GameManager.IsGameOver) {
 			GameManager.IsGameOver = true;
+			FindObjectOfType<Cracker> ().SoundCracker ();
 			source.Play ();
 		}
     }    

@@ -30,7 +30,7 @@ Material:
     m_Floats:
     - first:
         name: _Cutoff
-      second: 0.2164179
+      second: 0.21
     - first:
         name: _Shininess
       second: 0.17236951
