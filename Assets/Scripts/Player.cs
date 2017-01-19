@@ -18,10 +18,13 @@ public class Player : MonoBehaviour {
 		transform.Translate (Input.GetAxis ("Horizontal") * Time.deltaTime * speed, 0, Input.GetAxis ("Vertical") * Time.deltaTime * speed);
 	}
 
-	void OnCollisionStay(Collision col){
-		if (col.gameObject.name == "Wood" && col.contacts[0].point.z - lateOnWoodPosition > 1f + Random.Range(-0.5f,0.5f) ) {
-			source.Play ();
-			lateOnWoodPosition = col.contacts [0].point.z;
-		}
+	public IEnumerator StrongWind(float Sign,float time){
+		source.panStereo = Sign;
+		source.Play ();
+		yield return new WaitForSeconds (time);
+		source.Stop ();
+		yield return null;
 	}
+
+
 }

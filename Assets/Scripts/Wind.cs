@@ -9,11 +9,10 @@ public class Wind : MonoBehaviour
 	[SerializeField]
 	private float scale;
 	[SerializeField]
-	private float power = 1;
-	[SerializeField]
 	private ParticleSystem windParticle;
 
-	private Rigidbody player;
+	private Rigidbody playerRig;
+	private Player player;
 	private ParticleSystem.MinMaxCurve particleSpeed;
 
 	void Start()
@@ -24,10 +23,11 @@ public class Wind : MonoBehaviour
 
 	private IEnumerator WindBreathe()
 	{
-		player = FindObjectOfType<Player> ().gameObject.GetComponent<Rigidbody> ();
+		player = FindObjectOfType<Player> ();
+		//playerRig = player.gameObject.GetComponent<Rigidbody> ();
 		AudioSource source = GetComponent<AudioSource> ();
 		while (true) {
-            player.AddForce (Windpower, 0, 0, ForceMode.Force);
+			//playerRig.AddForce (Windpower, 0, 0, ForceMode.Force);
             foreach (Cloth cloth in FindObjectsOfType<Cloth>())
             {
                 cloth.externalAcceleration = new Vector3(Windpower, 0, 0);
@@ -54,11 +54,22 @@ public class Wind : MonoBehaviour
     {
         while (true)
         {
-			Windpower = NaturalRandom(Random.Range(-scale, scale), 10, 0);
+			var random = Mathf.FloorToInt( Random.Range (0,2.5f));
+			if (random == 0) {
+				Windpower = NaturalRandom (Random.Range (-scale, scale), 10, 0);
+			} else if (random == 2 && Mathf.Abs(Windpower) < 80) {
+				Windpower = Random.value <= 0.5f ? -80 : 80;
+			} else {
+				Windpower = NaturalRandom (Random.Range (-scale / 10, scale / 10), 10, 0);
+			}
 			var particle = windParticle.main;
 			particle.startSpeed = (Windpower / scale)*-10 ;
-            //Windpower = (Windpower + Random.Range(-power,power)) * power;
-			yield return new WaitForSeconds(Random.Range(1,5f));
+			var time = Random.Range (1.5f, 5f);
+			if (Mathf.Abs(Windpower) >= 80 && WoodPlate.lateOnWoodPosition >= 0.65f) {
+				time = Mathf.Clamp (time * Random.Range (2, 3), 3.5f, 7);
+				player.StartCoroutine (player.StrongWind (Mathf.Sign (Windpower), time));
+			}
+			yield return new WaitForSeconds(time);
         }
     }
 }
