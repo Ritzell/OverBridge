@@ -10,7 +10,8 @@ public class Wind : MonoBehaviour
 	private float scale;
 	[SerializeField]
 	private ParticleSystem windParticle;
-
+	[SerializeField]
+	private AudioSource windSource;
 	private Rigidbody playerRig;
 	private Player player;
 	private ParticleSystem.MinMaxCurve particleSpeed;
@@ -24,10 +25,11 @@ public class Wind : MonoBehaviour
 	private IEnumerator WindBreathe()
 	{
 		player = FindObjectOfType<Player> ();
-		//playerRig = player.gameObject.GetComponent<Rigidbody> ();
+		playerRig = player.gameObject.GetComponent<Rigidbody> ();
 		AudioSource source = GetComponent<AudioSource> ();
 		while (true) {
 			//playerRig.AddForce (Windpower, 0, 0, ForceMode.Force);
+			windSource.pitch = Mathf.Clamp(Mathf.Abs(playerRig.velocity.y) / 4,1,6);
             foreach (Cloth cloth in FindObjectsOfType<Cloth>())
             {
                 cloth.externalAcceleration = new Vector3(Windpower, 0, 0);
