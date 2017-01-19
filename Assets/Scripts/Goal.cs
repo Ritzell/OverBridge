@@ -14,6 +14,7 @@ public class Goal : MonoBehaviour {
     void OnTriggerEnter(Collider col)
     {
 		if (!GameManager.IsGameOver) {
+			GameManager.IsGameOver = true;
 			source.Play ();
 		}
     }    

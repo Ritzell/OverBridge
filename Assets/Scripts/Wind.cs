@@ -65,7 +65,7 @@ public class Wind : MonoBehaviour
 			var particle = windParticle.main;
 			particle.startSpeed = (Windpower / scale)*-10 ;
 			var time = Random.Range (1.5f, 5f);
-			if (Mathf.Abs(Windpower) >= 80 && WoodPlate.lateOnWoodPosition >= 0.65f) {
+			if (Mathf.Abs(Windpower) >= 80 && WoodPlate.lateOnWoodPosition >= 0.65f && !GameManager.IsGameOver) {
 				time = Mathf.Clamp (time * Random.Range (2, 3), 3.5f, 7);
 				player.StartCoroutine (player.StrongWind (Mathf.Sign (Windpower), time));
 			}
