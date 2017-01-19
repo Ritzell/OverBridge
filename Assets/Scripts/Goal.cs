@@ -13,6 +13,8 @@ public class Goal : MonoBehaviour {
 
     void OnTriggerEnter(Collider col)
     {
-        source.Play();
+		if (!GameManager.IsGameOver) {
+			source.Play ();
+		}
     }    
 }

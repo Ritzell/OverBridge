@@ -8,8 +8,6 @@ public class ClockTower : MonoBehaviour {
     [SerializeField]
     private GameObject hand;
     [SerializeField]
-    private GameObject panel;
-    [SerializeField]
     private float TimeLimitSeconds = 10;
 
     private static bool IsGameOver = false;
@@ -66,6 +64,6 @@ public class ClockTower : MonoBehaviour {
 
     void RotateSecondsHand(float angle)
     {
-        hand.transform.localEulerAngles = new Vector3(hand.transform.rotation.x, angle, hand.transform.rotation.y);
+		hand.transform.localEulerAngles = new Vector3(-180, 0, angle);
     }
 }
