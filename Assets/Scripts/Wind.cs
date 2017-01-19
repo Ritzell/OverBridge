@@ -12,8 +12,6 @@ public class Wind : MonoBehaviour
 	private float power = 1;
 	[SerializeField]
 	private ParticleSystem windParticle;
-	[SerializeField]
-	private Cloth cloth;
 
 	private Rigidbody player;
 
@@ -36,7 +34,10 @@ public class Wind : MonoBehaviour
 			}*/
 			player.AddForce (Windpower, 0, 0, ForceMode.Force);
 			source.pitch = Windpower / (power * 2) + 1 * Mathf.Clamp(Mathf.Abs(player.velocity.y) / 3,1,5f);
-			cloth.externalAcceleration = new Vector3 (Windpower,0,0);
+            foreach (Cloth cloth in FindObjectsOfType<Cloth>())
+            {
+                cloth.externalAcceleration = new Vector3(Windpower, 0, 0);
+            }
 
 			yield return null;
 		}
