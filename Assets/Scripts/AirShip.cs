@@ -5,13 +5,25 @@ using UnityEngine;
 public class AirShip : MonoBehaviour {
 	[SerializeField]
 	private float scale = 1;
-	// Use this for initialization
-	void Start () {
-		
+	[SerializeField]
+	private GameObject AirShipCamera;
+
+	private GameObject player;
+	private Vector3 center;
+
+	void Start(){
+		player = FindObjectOfType<Player> ().gameObject;
+		center = FindObjectOfType<WoodPlate> ().gameObject.transform.position;
 	}
 	
 	// Update is called once per frame
 	void Update () {
-		transform.GetComponent<Rigidbody> ().AddForce (Mathf.PerlinNoise(Time.time,Time.deltaTime) - 0.5f, 0, Mathf.PerlinNoise(Time.deltaTime,Time.time) - 0.5f,ForceMode.Acceleration);
+		transform.RotateAround (center, Vector3.up, scale * Time.deltaTime);
+		//transform.GetComponent<Rigidbody> ().AddForce (Mathf.PerlinNoise(Time.time,Time.deltaTime) - 0.5f, 0, Mathf.PerlinNoise(Time.deltaTime,Time.time) - 0.5f,ForceMode.Acceleration);
+		var StartRt = AirShipCamera.transform.rotation;
+		AirShipCamera.transform.LookAt (player.transform);
+		var EndRt = AirShipCamera.transform.rotation;
+		AirShipCamera.transform.rotation = StartRt;
+		AirShipCamera.transform.rotation = Quaternion.Lerp(StartRt,EndRt,Time.deltaTime*5);
 	}
 }
