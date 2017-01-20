@@ -34,6 +34,11 @@ public class Wind : MonoBehaviour
             {
                 cloth.externalAcceleration = new Vector3(Windpower, 0, 0);
             }
+			/*foreach (originBalloon balloon in FindObjectsOfType<originBalloon>())
+			{
+				var force = new Vector3(Windpower/2 + Random.Range(-10,10), 0, 0) - balloon.GetComponent<Rigidbody>().velocity;//AddForce(Windpower, 0, 0);
+				balloon.GetComponent<Rigidbody>().AddForce(force);
+			}*/
 			yield return null;
 		}
 	}

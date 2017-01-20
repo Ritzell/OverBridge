@@ -14,12 +14,4 @@ public class Squeaking : MonoBehaviour {
 		source.pitch = Random.Range (0.9f, 1.1f);
 		source.Play ();
 	}
-
-
-	// Update is called once per frame
-	void Update () {
-		if (!source.isPlaying) {
-			Destroy (gameObject);
-		}
-	}
 }
