@@ -31,7 +31,7 @@ public class Player : MonoBehaviour {
 		if (source.pitch >= 2f) {
 			Debug.Log ("gameover");
 			GameManager.IsGameOver = true;
-			GetComponent<Rigidbody> ().AddForce (80 * Sign, 0, 0, ForceMode.VelocityChange);
+			GetComponent<Rigidbody> ().AddForce (80 * Sign, 0, 0, ForceMode.Impulse);
 		}
 		source.pitch = 1;
 		source.Stop ();
