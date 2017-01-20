@@ -1101,7 +1101,7 @@ GameObject:
   - component: {fileID: 230481542}
   - component: {fileID: 230481541}
   - component: {fileID: 230481546}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Cloth (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1667,7 +1667,7 @@ ParticleSystemRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingOrder: 0
-  m_RenderMode: 0
+  m_RenderMode: 4
   m_SortMode: 0
   m_MinParticleSize: 0
   m_MaxParticleSize: 0.2
@@ -1680,7 +1680,7 @@ ParticleSystemRenderer:
   m_Pivot: {x: 0, y: 0, z: 0}
   m_UseCustomVertexStreams: 0
   m_VertexStreamMask: 27
-  m_Mesh: {fileID: 0}
+  m_Mesh: {fileID: 10209, guid: 0000000000000000e000000000000000, type: 0}
   m_Mesh1: {fileID: 0}
   m_Mesh2: {fileID: 0}
   m_Mesh3: {fileID: 0}
@@ -1739,7 +1739,7 @@ ParticleSystem:
   moveWithTransform: 1
   moveWithCustomTransform: {fileID: 0}
   scalingMode: 0
-  randomSeed: -1284821501
+  randomSeed: -8339909
   InitialModule:
     serializedVersion: 3
     enabled: 1
@@ -1903,7 +1903,7 @@ ParticleSystem:
       maxColor: {r: 1, g: 1, b: 1, a: 1}
       minMaxState: 4
     startSize:
-      scalar: 0.05
+      scalar: 0.01
       maxCurve:
         serializedVersion: 2
         m_Curve:
@@ -2065,7 +2065,7 @@ ParticleSystem:
         m_RotationOrder: 0
       minMaxState: 3
     randomizeRotationDirection: 0
-    maxNumParticles: 2000
+    maxNumParticles: 3000
     size3D: 0
     rotation3D: 0
     gravityModifier:
@@ -2134,7 +2134,7 @@ ParticleSystem:
     enabled: 1
     serializedVersion: 3
     rateOverTime:
-      scalar: 1000
+      scalar: 1500
       maxCurve:
         serializedVersion: 2
         m_Curve:
@@ -3488,7 +3488,7 @@ ParticleSystem:
     range: {x: 0, y: 1}
     separateAxes: 0
   RotationBySpeedModule:
-    enabled: 0
+    enabled: 1
     x:
       scalar: 0
       maxCurve:
@@ -3500,15 +3500,9 @@ ParticleSystem:
           inSlope: 0
           outSlope: 0
           tangentMode: 0
-        - serializedVersion: 2
-          time: 1
-          value: 1
-          inSlope: 0
-          outSlope: 0
-          tangentMode: 0
         m_PreInfinity: 2
         m_PostInfinity: 2
-        m_RotationOrder: 4
+        m_RotationOrder: 0
       minCurve:
         serializedVersion: 2
         m_Curve:
@@ -3539,15 +3533,9 @@ ParticleSystem:
           inSlope: 0
           outSlope: 0
           tangentMode: 0
-        - serializedVersion: 2
-          time: 1
-          value: 1
-          inSlope: 0
-          outSlope: 0
-          tangentMode: 0
         m_PreInfinity: 2
         m_PostInfinity: 2
-        m_RotationOrder: 4
+        m_RotationOrder: 0
       minCurve:
         serializedVersion: 2
         m_Curve:
@@ -3568,7 +3556,7 @@ ParticleSystem:
         m_RotationOrder: 4
       minMaxState: 0
     curve:
-      scalar: 0.7853982
+      scalar: 6.283185
       maxCurve:
         serializedVersion: 2
         m_Curve:
@@ -3578,15 +3566,9 @@ ParticleSystem:
           inSlope: 0
           outSlope: 0
           tangentMode: 0
-        - serializedVersion: 2
-          time: 1
-          value: 1
-          inSlope: 0
-          outSlope: 0
-          tangentMode: 0
         m_PreInfinity: 2
         m_PostInfinity: 2
-        m_RotationOrder: 4
+        m_RotationOrder: 0
       minCurve:
         serializedVersion: 2
         m_Curve:
@@ -4381,6 +4363,10 @@ Prefab:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: 3fc3bbc4a9839d24eb455f5e511a1c39, type: 2}
+    - target: {fileID: 100006, guid: 3dcffdfb378102b40ae63dd076651f2d, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 3dcffdfb378102b40ae63dd076651f2d, type: 3}
   m_IsPrefabParent: 0
@@ -4692,7 +4678,7 @@ ParticleSystemRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingOrder: 0
-  m_RenderMode: 0
+  m_RenderMode: 4
   m_SortMode: 0
   m_MinParticleSize: 0
   m_MaxParticleSize: 0.2
@@ -4705,7 +4691,7 @@ ParticleSystemRenderer:
   m_Pivot: {x: 0, y: 0, z: 0}
   m_UseCustomVertexStreams: 0
   m_VertexStreamMask: 27
-  m_Mesh: {fileID: 0}
+  m_Mesh: {fileID: 10209, guid: 0000000000000000e000000000000000, type: 0}
   m_Mesh1: {fileID: 0}
   m_Mesh2: {fileID: 0}
   m_Mesh3: {fileID: 0}
@@ -4764,7 +4750,7 @@ ParticleSystem:
   moveWithTransform: 1
   moveWithCustomTransform: {fileID: 0}
   scalingMode: 0
-  randomSeed: 1753369458
+  randomSeed: 774741506
   InitialModule:
     serializedVersion: 3
     enabled: 1
@@ -4928,7 +4914,7 @@ ParticleSystem:
       maxColor: {r: 1, g: 1, b: 1, a: 1}
       minMaxState: 4
     startSize:
-      scalar: 0.05
+      scalar: 0.01
       maxCurve:
         serializedVersion: 2
         m_Curve:
@@ -5090,7 +5076,7 @@ ParticleSystem:
         m_RotationOrder: 0
       minMaxState: 3
     randomizeRotationDirection: 0
-    maxNumParticles: 2000
+    maxNumParticles: 3000
     size3D: 0
     rotation3D: 0
     gravityModifier:
@@ -5159,7 +5145,7 @@ ParticleSystem:
     enabled: 1
     serializedVersion: 3
     rateOverTime:
-      scalar: 1000
+      scalar: 1500
       maxCurve:
         serializedVersion: 2
         m_Curve:
@@ -6513,7 +6499,7 @@ ParticleSystem:
     range: {x: 0, y: 1}
     separateAxes: 0
   RotationBySpeedModule:
-    enabled: 0
+    enabled: 1
     x:
       scalar: 0
       maxCurve:
@@ -6593,7 +6579,7 @@ ParticleSystem:
         m_RotationOrder: 4
       minMaxState: 0
     curve:
-      scalar: 0.7853982
+      scalar: 6.283185
       maxCurve:
         serializedVersion: 2
         m_Curve:
@@ -7308,7 +7294,7 @@ GameObject:
   - component: {fileID: 908917479}
   - component: {fileID: 908917481}
   - component: {fileID: 908917484}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Cloth
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -10725,7 +10711,7 @@ ParticleSystemRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingOrder: 0
-  m_RenderMode: 0
+  m_RenderMode: 4
   m_SortMode: 0
   m_MinParticleSize: 0
   m_MaxParticleSize: 0.2
@@ -10738,7 +10724,7 @@ ParticleSystemRenderer:
   m_Pivot: {x: 0, y: 0, z: 0}
   m_UseCustomVertexStreams: 0
   m_VertexStreamMask: 27
-  m_Mesh: {fileID: 0}
+  m_Mesh: {fileID: 10209, guid: 0000000000000000e000000000000000, type: 0}
   m_Mesh1: {fileID: 0}
   m_Mesh2: {fileID: 0}
   m_Mesh3: {fileID: 0}
@@ -10797,7 +10783,7 @@ ParticleSystem:
   moveWithTransform: 1
   moveWithCustomTransform: {fileID: 0}
   scalingMode: 0
-  randomSeed: -840446495
+  randomSeed: 1169663608
   InitialModule:
     serializedVersion: 3
     enabled: 1
@@ -10961,7 +10947,7 @@ ParticleSystem:
       maxColor: {r: 1, g: 1, b: 1, a: 1}
       minMaxState: 4
     startSize:
-      scalar: 0.05
+      scalar: 0.01
       maxCurve:
         serializedVersion: 2
         m_Curve:
@@ -11123,7 +11109,7 @@ ParticleSystem:
         m_RotationOrder: 0
       minMaxState: 3
     randomizeRotationDirection: 0
-    maxNumParticles: 2000
+    maxNumParticles: 3000
     size3D: 0
     rotation3D: 0
     gravityModifier:
@@ -11192,7 +11178,7 @@ ParticleSystem:
     enabled: 1
     serializedVersion: 3
     rateOverTime:
-      scalar: 1000
+      scalar: 1500
       maxCurve:
         serializedVersion: 2
         m_Curve:
@@ -12546,7 +12532,7 @@ ParticleSystem:
     range: {x: 0, y: 1}
     separateAxes: 0
   RotationBySpeedModule:
-    enabled: 0
+    enabled: 1
     x:
       scalar: 0
       maxCurve:
@@ -12626,7 +12612,7 @@ ParticleSystem:
         m_RotationOrder: 4
       minMaxState: 0
     curve:
-      scalar: 0.7853982
+      scalar: 6.283185
       maxCurve:
         serializedVersion: 2
         m_Curve:
@@ -13592,6 +13578,10 @@ Prefab:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: 684d1261829ab0249922b8f12fed772c, type: 2}
+    - target: {fileID: 100000, guid: 53c4ce8a8f3cbe64a80427942bca612f, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 53c4ce8a8f3cbe64a80427942bca612f, type: 3}
   m_IsPrefabParent: 0
@@ -13739,7 +13729,7 @@ ParticleSystemRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingOrder: 0
-  m_RenderMode: 0
+  m_RenderMode: 4
   m_SortMode: 0
   m_MinParticleSize: 0
   m_MaxParticleSize: 0.2
@@ -13752,7 +13742,7 @@ ParticleSystemRenderer:
   m_Pivot: {x: 0, y: 0, z: 0}
   m_UseCustomVertexStreams: 0
   m_VertexStreamMask: 27
-  m_Mesh: {fileID: 0}
+  m_Mesh: {fileID: 10209, guid: 0000000000000000e000000000000000, type: 0}
   m_Mesh1: {fileID: 0}
   m_Mesh2: {fileID: 0}
   m_Mesh3: {fileID: 0}
@@ -13811,7 +13801,7 @@ ParticleSystem:
   moveWithTransform: 1
   moveWithCustomTransform: {fileID: 0}
   scalingMode: 0
-  randomSeed: 882262226
+  randomSeed: -1781133525
   InitialModule:
     serializedVersion: 3
     enabled: 1
@@ -13975,7 +13965,7 @@ ParticleSystem:
       maxColor: {r: 1, g: 1, b: 1, a: 1}
       minMaxState: 4
     startSize:
-      scalar: 0.05
+      scalar: 0.01
       maxCurve:
         serializedVersion: 2
         m_Curve:
@@ -14137,7 +14127,7 @@ ParticleSystem:
         m_RotationOrder: 0
       minMaxState: 3
     randomizeRotationDirection: 0
-    maxNumParticles: 2000
+    maxNumParticles: 3000
     size3D: 0
     rotation3D: 0
     gravityModifier:
@@ -14206,7 +14196,7 @@ ParticleSystem:
     enabled: 1
     serializedVersion: 3
     rateOverTime:
-      scalar: 1000
+      scalar: 1500
       maxCurve:
         serializedVersion: 2
         m_Curve:
@@ -15560,7 +15550,7 @@ ParticleSystem:
     range: {x: 0, y: 1}
     separateAxes: 0
   RotationBySpeedModule:
-    enabled: 0
+    enabled: 1
     x:
       scalar: 0
       maxCurve:
@@ -15640,7 +15630,7 @@ ParticleSystem:
         m_RotationOrder: 4
       minMaxState: 0
     curve:
-      scalar: 0.7853982
+      scalar: 6.283185
       maxCurve:
         serializedVersion: 2
         m_Curve:
@@ -20462,7 +20452,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 100000, guid: 780611a67e8e941a2b3aa96e5915a793, type: 2}
       propertyPath: m_StaticEditorFlags
-      value: 18
+      value: 4294967295
       objectReference: {fileID: 0}
     - target: {fileID: 11400000, guid: 780611a67e8e941a2b3aa96e5915a793, type: 2}
       propertyPath: waterMode
