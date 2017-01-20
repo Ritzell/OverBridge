@@ -13968,7 +13968,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 400002, guid: 53c4ce8a8f3cbe64a80427942bca612f, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0.33099365
+      value: 0.216
       objectReference: {fileID: 0}
     - target: {fileID: 400002, guid: 53c4ce8a8f3cbe64a80427942bca612f, type: 3}
       propertyPath: m_LocalRotation.x
@@ -13996,15 +13996,15 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 400002, guid: 53c4ce8a8f3cbe64a80427942bca612f, type: 3}
       propertyPath: m_LocalScale.x
-      value: 0.25
+      value: 0.39353547
       objectReference: {fileID: 0}
     - target: {fileID: 400002, guid: 53c4ce8a8f3cbe64a80427942bca612f, type: 3}
       propertyPath: m_LocalScale.y
-      value: 0.025000002
+      value: 0.03935356
       objectReference: {fileID: 0}
     - target: {fileID: 400002, guid: 53c4ce8a8f3cbe64a80427942bca612f, type: 3}
       propertyPath: m_LocalScale.z
-      value: 0.20184918
+      value: 0.31773934
       objectReference: {fileID: 0}
     - target: {fileID: 2300002, guid: 53c4ce8a8f3cbe64a80427942bca612f, type: 3}
       propertyPath: m_Materials.Array.data[0]
@@ -17864,7 +17864,7 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: bdf7a49d5b467474cbb0eeb963b60e35, type: 3}
-  m_PlayOnAwake: 1
+  m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
   Loop: 1
@@ -18170,7 +18170,7 @@ GameObject:
   - component: {fileID: 1764741449}
   - component: {fileID: 1764741453}
   - component: {fileID: 1764741454}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Wood
   m_TagString: Untagged
   m_Icon: {fileID: 0}
