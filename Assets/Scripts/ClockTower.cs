@@ -12,7 +12,7 @@ public class ClockTower : MonoBehaviour {
 	[SerializeField]
 	private float[] PlayBellTime;
     [SerializeField]
-    private float TimeLimitSeconds = 10;
+    public float TimeLimitSeconds = 10;
 
     private static DateTime StartTime;
     private static TimeSpan RestTime;
