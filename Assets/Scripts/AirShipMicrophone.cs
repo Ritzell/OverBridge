@@ -3,7 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class AirShipMicrophone : MonoBehaviour {
-
+	[SerializeField]
+	private AudioSource audio;
 	void Start() 
 	{
 		StartCoroutine (OutPutMicrophone ());
@@ -11,8 +12,6 @@ public class AirShipMicrophone : MonoBehaviour {
 
 	private IEnumerator OutPutMicrophone(){
 		while (true) {
-			// 空の Audio Sourceを取得
-			var audio = GetComponent<AudioSource> ();
 			// Audio Source の Audio Clip をマイク入力に設定
 			// 引数は、デバイス名（null ならデフォルト）、ループ、何秒取るか、サンプリング周波数
 			audio.clip = Microphone.Start (null, false, (int)FindObjectOfType<ClockTower>().TimeLimitSeconds, 44100);
