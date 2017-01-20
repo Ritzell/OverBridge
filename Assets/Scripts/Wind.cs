@@ -55,7 +55,7 @@ public class Wind : MonoBehaviour
     {
         while (true)
         {
-			var random = Mathf.FloorToInt( Random.Range (0,2.6f));
+			var random = Mathf.FloorToInt( Random.Range (0,2.8f));
 			if (random == 0) {
 				Windpower = NaturalRandom (Random.Range (-scale, scale), 10, 0);
 			} else if (random == 2 && Mathf.Abs(Windpower) < 80) {
@@ -64,7 +64,7 @@ public class Wind : MonoBehaviour
 				Windpower = NaturalRandom (Random.Range (-scale / 10, scale / 10), 10, 0);
 			}
 			var particle = windParticle.main;
-			particle.startSpeed = (Windpower / scale)*-10 ;
+			particle.startSpeed = (Windpower / scale)*-10;
 			var time = Random.Range (1.5f, 5f);
 			if (Mathf.Abs (Windpower) >= 80 && WoodPlate.lateOnWoodPosition >= 0.65f && !GameManager.IsGameOver) {
 				windSource.panStereo = 0.85f * Mathf.Sign (-Windpower);

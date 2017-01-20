@@ -24,13 +24,16 @@ public class Player : MonoBehaviour {
 	public IEnumerator StrongWind(float Sign,float time){
 		source.panStereo = Sign;
 		bool isStop = false;
+		source.Play ();
 		Coroutine balance = StartCoroutine(Balance(Sign));
 		yield return new WaitForSeconds (time);
 		StopCoroutine (balance);
 		if (source.pitch >= 2f) {
 			Debug.Log ("gameover");
 			GameManager.IsGameOver = true;
+			GetComponent<Rigidbody> ().AddForce (80 * Sign, 0, 0, ForceMode.VelocityChange);
 		}
+		source.pitch = 1;
 		source.Stop ();
 		yield return null;
 	}
@@ -39,6 +42,14 @@ public class Player : MonoBehaviour {
 		while (true) {
 			source.pitch = Mathf.Clamp (source.pitch + (Time.deltaTime / 2) - ((slope/Sign) * 3 * Time.deltaTime), 1, 2);
 			yield return null;
+		}
+	}
+
+	void OnCollisionExit(Collision col){
+		if (col.gameObject.layer == 11) {
+			StopAllCoroutines ();
+			source.pitch = 1;
+			source.Stop ();
 		}
 	}
 
