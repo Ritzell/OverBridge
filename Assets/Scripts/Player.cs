@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System;
 
 public class Player : MonoBehaviour {
 	[SerializeField]
@@ -8,6 +9,8 @@ public class Player : MonoBehaviour {
 
 	private float lateOnWoodPosition = 0;
 	private AudioSource source;
+
+	private float slope = 0;
 
 	void Start(){
 		source = GetComponent<AudioSource> ();
@@ -20,10 +23,23 @@ public class Player : MonoBehaviour {
 
 	public IEnumerator StrongWind(float Sign,float time){
 		source.panStereo = Sign;
-		source.Play ();
+		bool isStop = false;
+		Coroutine balance = StartCoroutine(Balance(Sign));
 		yield return new WaitForSeconds (time);
+		StopCoroutine (balance);
+		if (source.pitch >= 2f) {
+			Debug.Log ("gameover");
+			GameManager.IsGameOver = true;
+		}
 		source.Stop ();
 		yield return null;
+	}
+
+	private IEnumerator Balance(float Sign){
+		while (true) {
+			source.pitch = Mathf.Clamp (source.pitch + (Time.deltaTime / 2) - ((slope/Sign) * 3 * Time.deltaTime), 1, 2);
+			yield return null;
+		}
 	}
 
 
