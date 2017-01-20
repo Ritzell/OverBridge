@@ -28,7 +28,7 @@ public class Wind : MonoBehaviour
 		playerRig = player.gameObject.GetComponent<Rigidbody> ();
 		AudioSource source = GetComponent<AudioSource> ();
 		while (true) {
-			//windSource.pitch= Mathf.Clamp(Mathf.Abs(playerRig.velocity.y) / 4,1,6);
+			windSource.pitch= Mathf.Clamp(Mathf.Abs(playerRig.velocity.y) / 4,1,6);
             foreach (Cloth cloth in FindObjectsOfType<Cloth>())
             {
                 cloth.externalAcceleration = new Vector3(Windpower, 0, 0);

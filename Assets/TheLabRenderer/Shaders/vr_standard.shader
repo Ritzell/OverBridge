@@ -88,7 +88,9 @@ Shader "Valve/vr_standard"
 
 			Blend [_SrcBlend] [_DstBlend]
 			ZWrite [_ZWrite]
-			Cull [_Cull]
+			Cull off
+			
+			//Cull [_Cull]
 
 			CGPROGRAM
 				#pragma target 5.0
