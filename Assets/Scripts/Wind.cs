@@ -28,17 +28,11 @@ public class Wind : MonoBehaviour
 		playerRig = player.gameObject.GetComponent<Rigidbody> ();
 		AudioSource source = GetComponent<AudioSource> ();
 		while (true) {
-			//playerRig.AddForce (Windpower, 0, 0, ForceMode.Force);
-			windSource.pitch = Mathf.Clamp(Mathf.Abs(playerRig.velocity.y) / 4,1,6);
+			//windSource.pitch= Mathf.Clamp(Mathf.Abs(playerRig.velocity.y) / 4,1,6);
             foreach (Cloth cloth in FindObjectsOfType<Cloth>())
             {
                 cloth.externalAcceleration = new Vector3(Windpower, 0, 0);
             }
-			/*foreach (originBalloon balloon in FindObjectsOfType<originBalloon>())
-			{
-				var force = new Vector3(Windpower/2 + Random.Range(-10,10), 0, 0) - balloon.GetComponent<Rigidbody>().velocity;//AddForce(Windpower, 0, 0);
-				balloon.GetComponent<Rigidbody>().AddForce(force);
-			}*/
 			yield return null;
 		}
 	}
@@ -72,9 +66,12 @@ public class Wind : MonoBehaviour
 			var particle = windParticle.main;
 			particle.startSpeed = (Windpower / scale)*-10 ;
 			var time = Random.Range (1.5f, 5f);
-			if (Mathf.Abs(Windpower) >= 80 && WoodPlate.lateOnWoodPosition >= 0.65f && !GameManager.IsGameOver) {
+			if (Mathf.Abs (Windpower) >= 80 && WoodPlate.lateOnWoodPosition >= 0.65f && !GameManager.IsGameOver) {
+				windSource.panStereo = 0.85f * Mathf.Sign (-Windpower);
 				time = Mathf.Clamp (time * Random.Range (2, 3), 3.5f, 7);
 				player.StartCoroutine (player.StrongWind (Mathf.Sign (Windpower), time));
+			} else {
+				windSource.panStereo = 0;
 			}
 			yield return new WaitForSeconds(time);
         }
