@@ -6,11 +6,13 @@ using System;
 public class Player : MonoBehaviour {
 	[SerializeField]
 	private float speed = 1;
+	[SerializeField]
+	private float BalanceScale = 1;
 
-	private float lateOnWoodPosition = 0;
 	private AudioSource source;
-
 	private float slope = 0;
+	[SerializeField]
+	private Transform[] Hands = new Transform[2];
 
 	void Start(){
 		source = GetComponent<AudioSource> ();
@@ -22,8 +24,7 @@ public class Player : MonoBehaviour {
 	}
 
 	public IEnumerator StrongWind(float Sign,float time){
-		source.panStereo = Sign;
-		bool isStop = false;
+		source.panStereo = 0.8f * Sign;
 		source.Play ();
 		Coroutine balance = StartCoroutine(Balance(Sign));
 		yield return new WaitForSeconds (time);
@@ -38,11 +39,39 @@ public class Player : MonoBehaviour {
 		yield return null;
 	}
 
-	private IEnumerator Balance(float Sign){
+	private IEnumerator Balance(float WindSign){
+		float BalanceSlope = 0;
 		while (true) {
-			source.pitch = Mathf.Clamp (source.pitch + (Time.deltaTime / 2) - ((slope/Sign) * 3 * Time.deltaTime), 1, 2);
+			if (!(Hands [0] == null || Hands [1] == null)) {
+				BalanceSlope = SlopeInWorldSpace (Hands [0], Hands [1]);
+			} else {
+				BalanceSlope = 0;
+			}
+			source.pitch = Mathf.Clamp (source.pitch + (Time.deltaTime / 2) + ((BalanceSlope/WindSign) * BalanceScale *Time.deltaTime), 1, 2.5f);
 			yield return null;
 		}
+	}
+	/// <summary>
+	/// return (a-b)
+	/// </summary>
+	/// <param name="a">The alpha component.</param>
+	/// <param name="b">The blue component.</param>
+	private float Distance(float a, float b){
+		return a - b;
+	}
+
+	/// <summary>
+	/// 左右どちらにどのくらい傾いてるかを返す
+	/// 引数AとBは傾きが知りたいオブジェクトの両端の座標
+	/// </summary>
+	/// <returns>The in world space.</returns>
+	/// <param name="x">The x coordinate.</param>
+	/// <param name="y">The y coordinate.</param>
+	private float SlopeInWorldSpace(Transform handA, Transform handB){
+		//戻り値がマイナスならワールド軸の左への傾き、プラスなら右への傾きを示す
+		//AからBに対するY軸距離 *　(BからAへのX軸方向(Bより右なら+1、左なら-1)　*　-　1(方向の反転))
+		var distance = Distance (handA.position.y, handB.position.y);
+		return distance * (Mathf.Sign(Distance(handA.position.x,handB.position.x)) * - 1);
 	}
 
 	void OnCollisionExit(Collision col){
