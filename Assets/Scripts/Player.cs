@@ -21,6 +21,9 @@ public class Player : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 		transform.Translate (Input.GetAxis ("Horizontal") * Time.deltaTime * speed, 0, Input.GetAxis ("Vertical") * Time.deltaTime * speed);
+		if (transform.position.y <= 10) {
+			GameManager.IsGameOver = true;
+		}
 	}
 
 	public IEnumerator StrongWind(float Sign,float time){
@@ -30,7 +33,6 @@ public class Player : MonoBehaviour {
 		yield return new WaitForSeconds (time);
 		StopCoroutine (balance);
 		if (source.pitch >= 2f) {
-			Debug.Log ("gameover");
 			GameManager.IsGameOver = true;
 			GetComponent<Rigidbody> ().AddForce (80 * Sign, 0, 0, ForceMode.Impulse);
 		}

@@ -67,6 +67,13 @@ public class Wind : MonoBehaviour
 			Windpower = windStatus.y;
 			var particle = windParticle.main;
 			particle.startSpeed = (Windpower / scale)*-10;
+			if (Mathf.Abs (Windpower) >= 80 && WoodPlate.lateOnWoodPosition >= 0.65f && !GameManager.IsGameOver) {
+				windSource.panStereo = 0.85f * Mathf.Sign (-Windpower);
+
+				player.StartCoroutine (player.StrongWind (Mathf.Sign (Windpower), windStatus.x));
+			} else {
+				windSource.panStereo = 0;
+			}
 			AddWindpowerForecast (true);
 			yield return new WaitForSeconds(windStatus.x);
         }
@@ -84,13 +91,8 @@ public class Wind : MonoBehaviour
 			windpower = NaturalRandom (Random.Range (-scale / 10, scale / 10), 10, 0);
 		}
 		var time = Random.Range (1.5f, 5f);
-
 		if (Mathf.Abs (windpower) >= 80 && WoodPlate.lateOnWoodPosition >= 0.65f && !GameManager.IsGameOver) {
-			windSource.panStereo = 0.85f * Mathf.Sign (-windpower);
 			time = Mathf.Clamp (time * Random.Range (2, 3), 3.5f, 7);
-			player.StartCoroutine (player.StrongWind (Mathf.Sign (windpower), time));
-		} else {
-			windSource.panStereo = 0;
 		}
 
 		WindForecastFrame.Forecasts.Add (new Vector2(time, windpower));

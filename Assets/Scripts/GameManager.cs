@@ -3,10 +3,26 @@ using System.Collections.Generic;
 using UnityEngine;
 using System;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
+
 
 public class GameManager : MonoBehaviour {
 
-    public static bool IsGameOver = false;
+	private static bool _isGameOver = false;
+	public static bool IsGameOver{
+		get{
+			return _isGameOver;
+		}set{
+			_isGameOver = value;
+			if (value) {
+				ReStart ();
+			}
+		}
+	}
+
+	void Awake(){
+		GameManager.IsGameOver = false;
+	}
     
     public float GetDegree(float x1, float x2, float y1, float y2)
     {
@@ -60,5 +76,9 @@ public class GameManager : MonoBehaviour {
         float sqrt = Mathf.Sqrt(Mathf.Abs(c));
         return sign == -1 ? -sqrt : sqrt;
     }
+
+	public static void ReStart(){
+		SceneManager.LoadScene (0);
+	}
 }
 
