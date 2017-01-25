@@ -74,8 +74,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0fd0c50d524d74d449ab4b8e5ffc2bef, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  TimeText: {fileID: 114423307823292076}
-  PowerText: {fileID: 114671626482570924}
+  TimeText: {fileID: 114671626482570924}
+  PowerText: {fileID: 114423307823292076}
 --- !u!114 &114397561743285104
 MonoBehaviour:
   m_ObjectHideFlags: 1
