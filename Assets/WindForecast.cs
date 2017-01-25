@@ -41,7 +41,7 @@ public class WindForecast : MonoBehaviour {
 
 	void DisplayTimeText(){
 		var time = Mathf.CeilToInt(_time);
-		TimeText.text = time.ToString ();
+		TimeText.text = time.ToString () + "秒";
 	}
 
 	void DisplyPowerText(){

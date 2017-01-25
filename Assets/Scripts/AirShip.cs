@@ -7,13 +7,17 @@ public class AirShip : MonoBehaviour {
 	private float scale = 1;
 	[SerializeField]
 	private GameObject AirShipCamera;
+	[SerializeField]
+	private GameObject[] Propeller = new GameObject[2];
 
 	private GameObject player;
 	private Vector3 center;
 
+
 	void Start(){
 		player = FindObjectOfType<Player> ().gameObject;
 		center = FindObjectOfType<WoodPlate> ().gameObject.transform.position;
+		StartCoroutine (RotatePropellers ());
 	}
 	
 	// Update is called once per frame
@@ -25,5 +29,14 @@ public class AirShip : MonoBehaviour {
 		var EndRt = AirShipCamera.transform.rotation;
 		AirShipCamera.transform.rotation = StartRt;
 		AirShipCamera.transform.rotation = Quaternion.Lerp(StartRt,EndRt,Time.deltaTime*5);
+	}
+
+	IEnumerator RotatePropellers(){
+		while (true) {
+			foreach (GameObject propeller in Propeller) {
+				propeller.transform.Rotate (0, 0, 36000 * Time.deltaTime);
+			}
+			yield return null;
+		}
 	}
 }
