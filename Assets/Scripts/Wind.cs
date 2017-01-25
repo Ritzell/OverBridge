@@ -67,9 +67,8 @@ public class Wind : MonoBehaviour
 			Windpower = windStatus.y;
 			var particle = windParticle.main;
 			particle.startSpeed = (Windpower / scale)*-10;
-			if (Mathf.Abs (Windpower) >= 80 && WoodPlate.lateOnWoodPosition >= 0.65f && !GameManager.IsGameOver) {
+			if (Mathf.Abs (Windpower) >= 80 && WoodPlate.lateOnWoodPosition >= 0.65f &&  WoodPlate.isPlayerOnWood) {
 				windSource.panStereo = 0.85f * Mathf.Sign (-Windpower);
-
 				player.StartCoroutine (player.StrongWind (Mathf.Sign (Windpower), windStatus.x));
 			} else {
 				windSource.panStereo = 0;

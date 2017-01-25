@@ -8,17 +8,7 @@ using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour {
 
-	private static bool _isGameOver = false;
-	public static bool IsGameOver{
-		get{
-			return _isGameOver;
-		}set{
-			_isGameOver = value;
-			if (value) {
-				ReStart ();
-			}
-		}
-	}
+	public static bool IsGameOver = false;
 
 	void Awake(){
 		GameManager.IsGameOver = false;
@@ -77,8 +67,15 @@ public class GameManager : MonoBehaviour {
         return sign == -1 ? -sqrt : sqrt;
     }
 
-	public static void ReStart(){
+	public static void ReStart(float time){
+		IsGameOver = true;
+		FindObjectOfType<GameManager>().StartCoroutine(FindObjectOfType<GameManager>().GameRestart(time));
+	}
+
+	public IEnumerator GameRestart(float time){
+		yield return new WaitForSeconds (time);
 		SceneManager.LoadScene (0);
+
 	}
 }
 

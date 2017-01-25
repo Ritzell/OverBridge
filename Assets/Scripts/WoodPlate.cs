@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class WoodPlate : MonoBehaviour {
 	public static float lateOnWoodPosition = 0;
-	private bool isPlayerOnWood = false;
+	public static bool isPlayerOnWood = false;
 	private Coroutine playSound;
 	[SerializeField]
 	private GameObject Squeaking;

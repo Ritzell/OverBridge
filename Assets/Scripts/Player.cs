@@ -22,7 +22,7 @@ public class Player : MonoBehaviour {
 	void Update () {
 		transform.Translate (Input.GetAxis ("Horizontal") * Time.deltaTime * speed, 0, Input.GetAxis ("Vertical") * Time.deltaTime * speed);
 		if (transform.position.y <= 10) {
-			GameManager.IsGameOver = true;
+			GameManager.ReStart (0f);
 		}
 	}
 

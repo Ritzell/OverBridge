@@ -65,7 +65,7 @@ public class ClockTower : MonoBehaviour {
 			bell.PlayBell ();
 		}
 		if (time >= 360) {
-			GameManager.IsGameOver = true;
+			GameManager.ReStart (5f);
 			StopCoroutine (timer);
 		}
     }
@@ -74,4 +74,6 @@ public class ClockTower : MonoBehaviour {
     {
 		hand.transform.localEulerAngles = new Vector3(-180, 0, angle);
     }
+
+
 }
