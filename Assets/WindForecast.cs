@@ -82,4 +82,10 @@ public class WindForecast : MonoBehaviour {
 			yield return null;
 		}
 	}
+
+    void OnDestroy()
+    {
+        Debug.Log("destroy");
+        StopAllCoroutines();
+    }
 }

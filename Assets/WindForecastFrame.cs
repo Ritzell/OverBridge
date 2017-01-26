@@ -9,7 +9,7 @@ public class WindForecastFrame : MonoBehaviour {
 	/// </summary>
 	public static List<Vector2> Forecasts = new List<Vector2>();
 	public Vector3[] ForecastPosition = new Vector3[4];
-	public static List<GameObject> ForecastsObject = new List<GameObject>();
+	public List<GameObject> ForecastsObject = new List<GameObject>();
 
 	[SerializeField]
 	private Canvas canvas;
@@ -28,7 +28,6 @@ public class WindForecastFrame : MonoBehaviour {
 		ForecastsObject.RemoveAt (0);
 		for (int i = 0; i < 2; i++) {
 			StartCoroutine(ForecastsObject [i].GetComponent<WindForecast> ().MoveToPoint (ForecastPosition [i]));
-			//ForecastsObject [i].GetComponent<RectTransform> ().anchoredPosition= ForecastPosition [i];
 			ForecastsObject [i].GetComponent<WindForecast> ()._nextState.MoveNext();
 		}
 		Add (2);
